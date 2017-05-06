@@ -2,6 +2,8 @@ package ohtu.kivipaperisakset;
 
 import java.util.Scanner;
 import ohtu.kivipaperisakset.Strategies.Ihminen;
+import ohtu.kivipaperisakset.Strategies.Tekoaly;
+import ohtu.kivipaperisakset.Strategies.TekoalyParannettu;
 
 public class Peli {
 
@@ -10,11 +12,22 @@ public class Peli {
     private Tuomari dumari;
     private Scanner scanner;
 
-    public Peli(Pelaaja ekaPelaaja, Pelaaja tokaPelaaja, Tuomari dumari, Scanner scanner) {
+    public Peli(Pelaaja ekaPelaaja, Pelaaja tokaPelaaja, Scanner scanner) {
         this.ekaPelaaja = ekaPelaaja;
         this.tokaPelaaja = tokaPelaaja;
-        this.dumari = dumari;
         this.scanner = scanner;
+        
+        this.dumari = new Tuomari();
+    }
+    
+    public static Peli ihminenVsIhminen(Scanner scanner) {
+        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new Ihminen(scanner)), scanner);
+    }
+    public static Peli ihminenVsTekoaly(Scanner scanner) {
+        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new Tekoaly()), scanner);
+    }
+    public static Peli ihminenVsParempiTekoaly(Scanner scanner) {
+        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new TekoalyParannettu(100)), scanner);
     }
 
     public void pelaa() {

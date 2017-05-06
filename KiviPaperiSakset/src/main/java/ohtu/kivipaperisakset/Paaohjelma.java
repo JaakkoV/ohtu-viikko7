@@ -1,8 +1,7 @@
 package ohtu.kivipaperisakset;
 
 import java.util.Scanner;
-import ohtu.kivipaperisakset.Strategies.Ihminen;
-import ohtu.kivipaperisakset.Strategies.Tekoaly;
+import ohtu.kivipaperisakset.Strategies.*;
 
 public class Paaohjelma {
 
@@ -20,15 +19,15 @@ public class Paaohjelma {
             String vastaus = scanner.nextLine();
             if (vastaus.endsWith("a")) {
                 System.out.println("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
-                Peli kaksinpeli = new Peli(new Pelaaja(new Ihminen(scanner)),new Pelaaja(new Ihminen(scanner)), new Tuomari(), scanner);
+                Peli kaksinpeli = Peli.ihminenVsIhminen(scanner);
                 kaksinpeli.pelaa();
             } else if (vastaus.endsWith("b")) {
                 System.out.println("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
-                Peli yksinpeli = new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new Tekoaly()), new Tuomari(), scanner);
+                Peli yksinpeli = Peli.ihminenVsTekoaly(scanner);
                 yksinpeli.pelaa();
             } else if (vastaus.endsWith("c")) {
                 System.out.println("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
-                Peli pahaYksinpeli = new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new Tekoaly()), new Tuomari(), scanner);
+                Peli pahaYksinpeli = Peli.ihminenVsParempiTekoaly(scanner);
                 pahaYksinpeli.pelaa();
             } else {
                 break;
