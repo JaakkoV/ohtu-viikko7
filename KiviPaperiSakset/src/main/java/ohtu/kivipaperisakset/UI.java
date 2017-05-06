@@ -37,7 +37,7 @@ public class UI {
         return vastaus;
     }
 
-    /* "Template-metodit" ensimmäiselle ja toiselle pelaajalle erikseen
+    /* "Template-metodit" ensimmäiselle ja toiselle pelaajalle erikseen,
      * ehkä helpoin tapa selvittää tarvitaanko "Ensimmäisen.." vai "Toisen siirto.."
      */
     public String käsitteleEnsimmäisenSiirto(Pelaaja e) {

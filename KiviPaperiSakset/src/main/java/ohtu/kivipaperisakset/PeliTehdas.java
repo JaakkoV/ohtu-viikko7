@@ -12,19 +12,19 @@ public class PeliTehdas {
         this.ui = ui;
     }
 
-    public Peli ihminenVsIhminen() {
+    private Peli ihminenVsIhminen() {
         luotujenPelienLukumäärä++;
         System.out.println(this.peliohjeet);
         return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new Ihminen()), ui);
     }
 
-    public Peli ihminenVsTekoaly() {
+    private Peli ihminenVsTekoaly() {
         luotujenPelienLukumäärä++;
         System.out.println(this.peliohjeet);
         return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new Tekoaly()), ui);
     }
 
-    public Peli ihminenVsParempiTekoaly() {
+    private Peli ihminenVsParempiTekoaly() {
         luotujenPelienLukumäärä++;
         System.out.println(this.peliohjeet);
         return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new TekoalyParannettu(100)), ui);
