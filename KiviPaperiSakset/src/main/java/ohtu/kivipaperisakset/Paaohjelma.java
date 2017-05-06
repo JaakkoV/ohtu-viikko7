@@ -4,6 +4,6 @@ public class Paaohjelma {
 
     public static void main(String[] args) {
         UI app = new UI();
-        app.run();
+        app.suorita();
     }
 }

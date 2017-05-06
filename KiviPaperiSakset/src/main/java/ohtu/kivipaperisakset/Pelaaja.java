@@ -28,5 +28,9 @@ public class Pelaaja {
     public String getViimeisinSiirto() {
         return viimeisinSiirto;
     }
+    
+    public boolean isIhminen() {
+        return (this.algo instanceof Ihminen);
+    }
 
 }

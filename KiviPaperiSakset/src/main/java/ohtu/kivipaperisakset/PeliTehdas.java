@@ -1,38 +1,37 @@
 package ohtu.kivipaperisakset;
 
-import java.util.Scanner;
 import ohtu.kivipaperisakset.Strategies.*;
 
 public class PeliTehdas {
 
-    private int countOfCreatedGames = 0;
-    private String ohjeet = "peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s";
-    private Scanner scanner;
+    private int luotujenPelienLukumäärä = 0;
+    private String peliohjeet = "peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s";
+    private UI ui;
 
-    public PeliTehdas(Scanner scanner) {
-        this.scanner = scanner;
+    public PeliTehdas(UI ui) {
+        this.ui = ui;
     }
 
     public Peli ihminenVsIhminen() {
-        countOfCreatedGames++;
-        System.out.println(this.ohjeet);
-        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new Ihminen(scanner)), scanner);
+        luotujenPelienLukumäärä++;
+        System.out.println(this.peliohjeet);
+        return new Peli(new Pelaaja(new Ihminen(ui.getSCANNER())), new Pelaaja(new Ihminen(ui.getSCANNER())), ui);
     }
 
     public Peli ihminenVsTekoaly() {
-        countOfCreatedGames++;
-        System.out.println(this.ohjeet);
-        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new Tekoaly()), scanner);
+        luotujenPelienLukumäärä++;
+        System.out.println(this.peliohjeet);
+        return new Peli(new Pelaaja(new Ihminen(ui.getSCANNER())), new Pelaaja(new Tekoaly()), ui);
     }
 
     public Peli ihminenVsParempiTekoaly() {
-        countOfCreatedGames++;
-        System.out.println(this.ohjeet);
-        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new TekoalyParannettu(100)), scanner);
+        luotujenPelienLukumäärä++;
+        System.out.println(this.peliohjeet);
+        return new Peli(new Pelaaja(new Ihminen(ui.getSCANNER())), new Pelaaja(new TekoalyParannettu(100)),  ui);
     }
 
-    public Peli komennolla(char command) {
-        switch (command) {
+    public Peli komennolla(char komento) {
+        switch (komento) {
             case 'a':
                 return ihminenVsIhminen();
             case 'b':
@@ -43,8 +42,7 @@ public class PeliTehdas {
         return null;
     }
 
-    public int getCountOfCreatedGames() {
-        return countOfCreatedGames;
+    public int getLuotujenPelienLukumäärä() {
+        return luotujenPelienLukumäärä;
     }
-
 }
