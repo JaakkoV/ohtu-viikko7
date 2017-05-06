@@ -20,15 +20,7 @@ public class Peli {
         this.dumari = new Tuomari();
     }
     
-    public static Peli ihminenVsIhminen(Scanner scanner) {
-        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new Ihminen(scanner)), scanner);
-    }
-    public static Peli ihminenVsTekoaly(Scanner scanner) {
-        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new Tekoaly()), scanner);
-    }
-    public static Peli ihminenVsParempiTekoaly(Scanner scanner) {
-        return new Peli(new Pelaaja(new Ihminen(scanner)), new Pelaaja(new TekoalyParannettu(100)), scanner);
-    }
+    
 
     public void pelaa() {
         Tuomari tuomari = new Tuomari();
