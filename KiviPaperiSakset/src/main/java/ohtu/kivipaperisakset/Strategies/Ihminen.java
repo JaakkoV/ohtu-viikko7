@@ -11,7 +11,6 @@ public class Ihminen implements Strategy {
 
     @Override
     public void asetaSiirto(String ekanSiirto) {
-        throw new UnsupportedOperationException("Ihminen ei talleta siirtoja");
     }
 
 }

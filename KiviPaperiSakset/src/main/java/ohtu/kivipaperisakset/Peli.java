@@ -22,6 +22,7 @@ public class Peli {
             tuomaroi(tuomari);
             ui.käsitteleEnsimmäisenSiirto(e);
             ui.käsitteleToisenSiirto(t);
+            t.asetaSiirto(e.getViimeisinSiirto());
         }
         ui.lopetus(tuomari);
     }

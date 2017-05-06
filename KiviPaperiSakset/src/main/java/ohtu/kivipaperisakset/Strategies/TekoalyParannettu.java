@@ -12,6 +12,7 @@ public class TekoalyParannettu implements Strategy {
     vapaaMuistiIndeksi = 0;
   }
   
+  @Override
   public void asetaSiirto(String siirto) {
     // jos muisti täyttyy, unohdetaan viimeinen alkio
     if(vapaaMuistiIndeksi == muisti.length) {
