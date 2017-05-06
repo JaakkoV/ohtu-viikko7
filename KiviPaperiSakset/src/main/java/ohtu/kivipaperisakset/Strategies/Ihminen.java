@@ -17,7 +17,7 @@ public class Ihminen implements Strategy {
 
     @Override
     public void asetaSiirto(String ekanSiirto) {
-        throw new UnsupportedOperationException("Ihminen ei talleta siirtoja"); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Ihminen ei talleta siirtoja");
     }
 
 }

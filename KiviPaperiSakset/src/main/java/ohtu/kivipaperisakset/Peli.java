@@ -5,54 +5,51 @@ import ohtu.kivipaperisakset.Strategies.*;
 
 public class Peli {
 
-    private Pelaaja ekaPelaaja;
-    private Pelaaja tokaPelaaja;
+    private Pelaaja e;
+    private Pelaaja t;
     private Tuomari dumari;
     private Scanner scanner;
 
     public Peli(Pelaaja ekaPelaaja, Pelaaja tokaPelaaja, Scanner scanner) {
-        this.ekaPelaaja = ekaPelaaja;
-        this.tokaPelaaja = tokaPelaaja;
+        this.e = ekaPelaaja;
+        this.t = tokaPelaaja;
         this.scanner = scanner;
-        
+
         this.dumari = new Tuomari();
     }
-    
 
     public void pelaa() {
         Tuomari tuomari = new Tuomari();
 
         System.out.print("Ensimmäisen pelaajan siirto: ");
-        String ekanSiirto = ekaPelaaja.annaSiirto();
+        e.annaSiirto();
         System.out.print("Toisen pelaajan siirto: ");
-        String tokanSiirto = tokaPelaaja.annaSiirto();
+        t.annaSiirto();
 
-        while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
-            tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
+        while (onkoOkSiirto(e.getViimeisinSiirto()) && onkoOkSiirto(t.getViimeisinSiirto())) {
+            tuomari.kirjaaSiirto(e.getViimeisinSiirto(), t.getViimeisinSiirto());
             System.out.println(tuomari);
             System.out.println();
 
-            System.out.print("Ensimmäisen pelaajan siirto: ");
-            ekanSiirto = ekaPelaaja.annaSiirto();
+            if (t.getAlgo() instanceof Ihminen) {
 
-            if (tokaPelaaja.getAlgo() instanceof Ihminen) {
+                käsitteleEnsimmäisenSiirto();
                 System.out.print("Toisen pelaajan siirto:: ");
-                tokanSiirto = tokaPelaaja.annaSiirto();
+                t.annaSiirto();
             } else {
-                tokanSiirto = tokaPelaaja.annaSiirto();
-                System.out.println("Tietokone valitsi: " + tokanSiirto);
+                t.annaSiirto();
+                System.out.println("Tietokone valitsi: " + t.getViimeisinSiirto());
 
-                while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
-                    tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
+                while (onkoOkSiirto(e.getViimeisinSiirto()) && onkoOkSiirto(t.getViimeisinSiirto())) {
+                    tuomari.kirjaaSiirto(e.getViimeisinSiirto(), t.getViimeisinSiirto());
                     System.out.println(tuomari);
                     System.out.println();
 
-                    System.out.print("Ensimmäisen pelaajan siirto: ");
-                    ekanSiirto = ekaPelaaja.annaSiirto();
+                    käsitteleEnsimmäisenSiirto();
 
-                    tokanSiirto = tokaPelaaja.annaSiirto();
-                    System.out.println("Tietokone valitsi: " + tokanSiirto);
-                    tokaPelaaja.asetaSiirto(ekanSiirto);
+                    t.annaSiirto();
+                    System.out.println("Tietokone valitsi: " + t.getViimeisinSiirto());
+                    t.asetaSiirto(e.getViimeisinSiirto());
                 }
             }
         }
@@ -60,6 +57,13 @@ public class Peli {
         System.out.println();
         System.out.println("Kiitos!");
         System.out.println(tuomari);
+    }
+
+    private String käsitteleEnsimmäisenSiirto() {
+        String ekanSiirto;
+        System.out.print("Ensimmäisen pelaajan siirto: ");
+        ekanSiirto = e.annaSiirto();
+        return ekanSiirto;
     }
 
     private static boolean onkoOkSiirto(String siirto) {
