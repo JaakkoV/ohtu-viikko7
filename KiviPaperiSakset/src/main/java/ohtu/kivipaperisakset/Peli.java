@@ -1,9 +1,7 @@
 package ohtu.kivipaperisakset;
 
 import java.util.Scanner;
-import ohtu.kivipaperisakset.Strategies.Ihminen;
-import ohtu.kivipaperisakset.Strategies.Tekoaly;
-import ohtu.kivipaperisakset.Strategies.TekoalyParannettu;
+import ohtu.kivipaperisakset.Strategies.*;
 
 public class Peli {
 
@@ -19,7 +17,6 @@ public class Peli {
         
         this.dumari = new Tuomari();
     }
-    
     
 
     public void pelaa() {

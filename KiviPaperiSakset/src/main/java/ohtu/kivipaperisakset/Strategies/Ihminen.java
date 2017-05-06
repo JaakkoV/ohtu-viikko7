@@ -12,7 +12,7 @@ public class Ihminen implements Strategy {
 
     @Override
     public String annaSiirto() {
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     @Override
