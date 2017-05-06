@@ -66,11 +66,7 @@ public class UI {
         System.out.println();
     }
 
-    public static Scanner getSCANNER() {
-        return SCANNER;
-    }
-    
-    public String annaSiirto() {
+    public static String annaSiirto() {
         return SCANNER.nextLine();
     }
 

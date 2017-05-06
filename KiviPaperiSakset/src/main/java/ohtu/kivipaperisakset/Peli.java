@@ -18,7 +18,7 @@ public class Peli {
     public void pelaa() {
         Tuomari tuomari = new Tuomari();
         ui.käsitteleEnsimmäisenSiirto(e);
-        ui.käsitteleToisenSiirto(e);
+        ui.käsitteleToisenSiirto(t);
 
         while (onkoOkSiirto(e.getViimeisinSiirto()) && onkoOkSiirto(t.getViimeisinSiirto())) {
             tuomaroi(tuomari);

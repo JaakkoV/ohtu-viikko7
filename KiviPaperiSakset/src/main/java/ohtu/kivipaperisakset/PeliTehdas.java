@@ -15,19 +15,19 @@ public class PeliTehdas {
     public Peli ihminenVsIhminen() {
         luotujenPelienLukumäärä++;
         System.out.println(this.peliohjeet);
-        return new Peli(new Pelaaja(new Ihminen(ui.getSCANNER())), new Pelaaja(new Ihminen(ui.getSCANNER())), ui);
+        return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new Ihminen()), ui);
     }
 
     public Peli ihminenVsTekoaly() {
         luotujenPelienLukumäärä++;
         System.out.println(this.peliohjeet);
-        return new Peli(new Pelaaja(new Ihminen(ui.getSCANNER())), new Pelaaja(new Tekoaly()), ui);
+        return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new Tekoaly()), ui);
     }
 
     public Peli ihminenVsParempiTekoaly() {
         luotujenPelienLukumäärä++;
         System.out.println(this.peliohjeet);
-        return new Peli(new Pelaaja(new Ihminen(ui.getSCANNER())), new Pelaaja(new TekoalyParannettu(100)),  ui);
+        return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new TekoalyParannettu(100)), ui);
     }
 
     public Peli komennolla(char komento) {
