@@ -5,21 +5,20 @@ import java.util.Scanner;
 public class UI {
 
     private static final Scanner SCANNER = new Scanner(System.in);
+    private PeliTehdas annaPeliTyyppi = new PeliTehdas(this);
 
     public void suorita() {
-        PeliTehdas annaPeliTyyppi = new PeliTehdas(this);
-
         while (true) {
             String vastaus = kysyPelityyppi();
-            if (käsitteleVastaus(vastaus, annaPeliTyyppi)) {
+            if (käsitteleVastaus(vastaus)) {
                 break;
             }
         }
     }
 
-    private boolean käsitteleVastaus(String vastaus, PeliTehdas annaPeliTyyppi) {
+    private boolean käsitteleVastaus(String vastaus) {
         char command = vastaus.length() == 0 ? '.' : vastaus.charAt(vastaus.length() - 1);
-        Peli peli = annaPeliTyyppi.komennolla(command);
+        Peli peli = annaPeliTyyppi.komennolla(command); // komentotehdasta mukaileva implementointi
         if (peli == null) {
             System.out.println(String.format("Ekstra: loit erilaisen pelin yhteensä %d kertaa", annaPeliTyyppi.getLuotujenPelienLukumäärä()));
             return true;
@@ -38,6 +37,9 @@ public class UI {
         return vastaus;
     }
 
+    /* "Template-metodit" ensimmäiselle ja toiselle pelaajalle erikseen
+     * ehkä helpoin tapa selvittää tarvitaanko "Ensimmäisen.." vai "Toisen siirto.."
+     */
     public String käsitteleEnsimmäisenSiirto(Pelaaja e) {
         System.out.print("Ensimmäisen pelaajan siirto: ");
         e.annaSiirto();
