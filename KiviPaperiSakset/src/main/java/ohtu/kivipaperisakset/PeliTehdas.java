@@ -13,21 +13,23 @@ public class PeliTehdas {
     }
 
     private Peli ihminenVsIhminen() {
-        luotujenPelienLukumäärä++;
-        System.out.println(this.peliohjeet);
+        pelienYhteisetOperaatiot();
         return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new Ihminen()), ui);
     }
 
     private Peli ihminenVsTekoaly() {
-        luotujenPelienLukumäärä++;
-        System.out.println(this.peliohjeet);
+        pelienYhteisetOperaatiot();
         return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new Tekoaly()), ui);
     }
 
     private Peli ihminenVsParempiTekoaly() {
+        pelienYhteisetOperaatiot();
+        return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new TekoalyParannettu(100)), ui);
+    }
+
+    private void pelienYhteisetOperaatiot() {
         luotujenPelienLukumäärä++;
         System.out.println(this.peliohjeet);
-        return new Peli(new Pelaaja(new Ihminen()), new Pelaaja(new TekoalyParannettu(100)), ui);
     }
 
     public Peli komennolla(char komento) {
